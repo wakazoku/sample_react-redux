@@ -1,7 +1,7 @@
 import React from "react";
 import logo from "./logo.svg";
 import "./App.css";
-import "./pure-redux-sample/sample2";
+import "./redux-sample/sample2";
 
 function App() {
   return (
