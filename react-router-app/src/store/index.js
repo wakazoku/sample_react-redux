@@ -1,19 +1,14 @@
-import {
-  createStore as reduxCreateStore,
-  combineReducers,
-  applyMiddleware,
-  compose,
-} from "redux";
-import { connectRouter, routerMiddleware } from "connected-react-router";
-import tasksReducer from "../reducers/tasks";
+import { createBrowserHistory } from "history";
+import { applyMiddleware, compose, createStore } from "redux";
+import { routerMiddleware } from "connected-react-router";
+import createRootReducer from "../reducers/index";
 
-// hitstoryは[src/index.js]から渡すようにする
-export default function createStore(hitstory) {
-  return reduxCreateStore(
-    combineReducers({
-      router: connectRouter(history),
-      tasks: tasksReducer,
-    }),
+export const history = createBrowserHistory();
+export default function configureStore(preloadedState) {
+  const store = createStore(
+    createRootReducer(history),
+    preloadedState,
     compose(applyMiddleware(routerMiddleware(history)))
   );
+  return store;
 }
