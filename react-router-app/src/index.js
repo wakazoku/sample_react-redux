@@ -1,15 +1,29 @@
 import React from "react";
-import { Provider } from "react-redux";
 import { render } from "react-dom";
-import { createStore } from "redux";
-import taskReducer from "./reducers/tasks";
+import { Route, Switch } from "react-router";
+import { Provider } from "react-redux";
+import { ConnectedRouter } from "connected-react-router";
+import createBrowserHistory from "history/createBrowserHistory";
 import TodoApp from "./containers/TodoApp";
+import Error from "./components/Error";
+import createStore from "./store";
 
-const store = createStore(taskReducer);
+// historyのインスタンスを生成
+const history = createBrowserHistory();
+
+// Storeの生成
+const store = createStore(history);
 
 render(
   <Provider store={store}>
-    <TodoApp />
+    <ConnectedRouter history={history}>
+      <div>
+        <Switch>
+          <Route exact path="/" component={TodoApp} />
+          <Route exact path="/error" component={Error} />
+        </Switch>
+      </div>
+    </ConnectedRouter>
   </Provider>,
   document.getElementById("root")
 );

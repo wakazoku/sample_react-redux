@@ -3,7 +3,7 @@ const initialState = {
   tasks: [],
 };
 
-export default function taskReducer(state = initialState, action) {
+export default function tasksReducer(state = initialState, action) {
   switch (action.type) {
     case "INPUT_TASK":
       return {
