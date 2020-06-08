@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import { push } from "connected-react-router";
-import TodoApps from "../components/TodoApp";
+import TodoApps from "../components/TodoApp/TodoApp";
 import { inputTask, addTask } from "../actions/tasks";
 
 function mapStateToProps({ tasks }) {
