@@ -1,4 +1,15 @@
 import React from "react";
+import "fontsource-roboto";
+import {
+  CssBaseline,
+  AppBar,
+  Toolbar,
+  Typography,
+  Input,
+  Button,
+  List,
+  ListItem,
+} from "@material-ui/core";
 
 export default function TodoApp({
   task,
@@ -9,13 +20,27 @@ export default function TodoApp({
 }) {
   return (
     <div>
-      <input type="text" onChange={(e) => inputTask(e.target.value)} />
-      <input type="button" value="add" onClick={() => addTask(task)} />
-      <ul>
+      <CssBaseline />
+      <AppBar position="static">
+        <Toolbar>
+          <Typography variant="h6" className="">
+            News
+          </Typography>
+        </Toolbar>
+      </AppBar>
+      <Input type="text" onChange={(e) => inputTask(e.target.value)} />
+      <Button variant="contained" color="primary" onClick={() => addTask(task)}>
+        add
+      </Button>
+      <List>
         {tasks.map((item, i) => {
-          return <li key={i}>{item}</li>;
+          return (
+            <ListItem button divider key={i}>
+              {item}
+            </ListItem>
+          );
         })}
-      </ul>
+      </List>
       <button onClick={() => redirectToError()}>エラーページへ</button>
     </div>
   );
