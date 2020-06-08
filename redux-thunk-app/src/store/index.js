@@ -5,13 +5,8 @@ import { logger } from "redux-logger";
 import storageMiddleware from "../middlewares/storageMiddleware";
 import createRootReducer from "../reducers/index";
 
-const savedState = JSON.parse(localStorage.getItem("app-state"));
-console.log(savedState);
-
 export const history = createBrowserHistory();
-export default function configureStore(
-  preloadedState = savedState ? savedState : {}
-) {
+export default function configureStore(preloadedState) {
   const store = createStore(
     createRootReducer(history),
     preloadedState,

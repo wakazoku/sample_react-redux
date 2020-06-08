@@ -7,8 +7,11 @@ import configureStore, { history } from "./store/index";
 import TodoApp from "./containers/TodoApp";
 import Error from "./components/Error";
 
+// ローカルストレージから初期値を取得
+const savedState = JSON.parse(localStorage.getItem("app-state"));
+
 // Storeの生成
-const store = configureStore(); // 必要ならstateの初期値を引数に
+const store = configureStore(savedState ? savedState : {}); // stateの初期値がある場合は引数に設定
 
 render(
   <Provider store={store}>
