@@ -1,5 +1,14 @@
 import React from "react";
 import PropTypes from "prop-types";
+import {
+  Typography,
+  Card,
+  CardActionArea,
+  CardActions,
+  CardContent,
+  CardMedia,
+  Button,
+} from "@material-ui/core";
 
 export default class Ranking extends React.Component {
   UNSAFE_componentWillMount() {
@@ -26,18 +35,34 @@ export default class Ranking extends React.Component {
           } else if (typeof ranking === "undefined") {
             return <p>読み込み中...</p>;
           } else {
-            return (
-              <ol>
-                {ranking.map((item) => (
-                  <li key={`ranking-item-${item.code}`}>
-                    <img src={item.imageUrl} alt={item.name} />
-                    <a href={item.url} target="_blank">
-                      {item.name}
-                    </a>
-                  </li>
-                ))}
-              </ol>
-            );
+            return ranking.map((item, i) => (
+              <Card
+                key={`ranking-item-${item.code}`}
+                style={{ maxWidth: "500px", margin: "32px auto" }}
+              >
+                <CardActionArea>
+                  <CardMedia
+                    image={item.imageUrl}
+                    title={`${i + 1}位 ${item.name}`}
+                    style={{ height: "200px" }}
+                  />
+                  <CardContent>
+                    <Typography>{`${i + 1}位 ${item.name}`}</Typography>
+                  </CardContent>
+                </CardActionArea>
+                <CardActions>
+                  <Button
+                    fullWidth
+                    variant="outlined"
+                    color="primary"
+                    href={item.url}
+                    target="_blank"
+                  >
+                    商品ページへ
+                  </Button>
+                </CardActions>
+              </Card>
+            ));
           }
         })()}
       </div>
