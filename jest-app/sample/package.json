@@ -3,10 +3,14 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "dependencies": {
-    "jest": "^26.0.1"
+  "dependencies": {},
+  "devDependencies": {
+    "@babel/core": "^7.10.2",
+    "@babel/preset-env": "^7.10.2",
+    "babel-jest": "^26.0.1",
+    "jest": "^26.0.1",
+    "regenerator-runtime": "^0.13.5"
   },
-  "devDependencies": {},
   "scripts": {
     "test": "jest"
   },
