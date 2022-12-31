@@ -12,7 +12,7 @@
     "react-dom": "^16.13.1",
     "react-redux": "^7.2.0",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "0.9.x",
+    "react-scripts": "5.0.x",
     "react-transition-group": "^4.4.1",
     "redux": "^4.0.5",
     "redux-logger": "^3.0.6"
